@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: R Versions API
+  description: >-
+    REST API providing the current and previous stable releases of R, including
+    version numbers and release dates. Used by CI/CD tools, package managers,
+    and build systems to determine supported R versions. Maintained by the
+    METACRAN project.
+  version: 1.0.0
+  contact:
+    name: METACRAN
+    url: https://r-pkg.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://rversions.r-pkg.org
+    description: R Versions API production server
+tags:
+  - name: Versions
+    description: R release version information
+paths:
+  /r-release:
+    get:
+      operationId: getRRelease
+      summary: Get Current R Release
+      description: >-
+        Returns the current stable release of R, including the version number
+        and release date.
+      tags:
+        - Versions
+      responses:
+        '200':
+          description: Current R release version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RVersion'
+  /r-release-win:
+    get:
+      operationId: getRReleaseWindows
+      summary: Get Current R Release for Windows
+      description: >-
+        Returns the current stable release of R for Windows, including version
+        number and release date.
+      tags:
+        - Versions
+      responses:
+        '200':
+          description: Current R release version for Windows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RVersion'
+  /r-release-macos:
+    get:
+      operationId: getRReleaseMacos
+      summary: Get Current R Release for macOS
+      description: >-
+        Returns the current stable release of R for macOS, including version
+        number and release date.
+      tags:
+        - Versions
+      responses:
+        '200':
+          description: Current R release version for macOS
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RVersion'
+  /r-oldrel:
+    get:
+      operationId: getROldrel
+      summary: Get Previous R Release
+      description: >-
+        Returns the previous stable release of R (oldrel), useful for testing
+        backward compatibility in CI pipelines.
+      tags:
+        - Versions
+      responses:
+        '200':
+          description: Previous R release version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RVersion'
+  /r-versions:
+    get:
+      operationId: listRVersions
+      summary: List All R Versions
+      description: >-
+        Returns all historical R releases including version numbers, release
+        dates, and nicknames.
+      tags:
+        - Versions
+      responses:
+        '200':
+          description: List of all R versions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RVersionDetail'
+components:
+  schemas:
+    RVersion:
+      type: object
+      properties:
+        version:
+          type: string
+          description: R version number
+          example: 4.4.2
+        date:
+          type: string
+          format: date
+          description: Release date
+          example: '2024-10-31'
+        nickname:
+          type: string
+          description: R release nickname
+          example: Pile of Leaves
+    RVersionDetail:
+      type: object
+      properties:
+        version:
+          type: string
+          description: R version number
+          example: 4.4.2
+        date:
+          type: string
+          format: date
+          description: Release date
+          example: '2024-10-31'
+        nickname:
+          type: string
+          description: R release nickname
+          example: Pile of Leaves

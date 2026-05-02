@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/json-schema/r-version-schema.json",
+  "title": "R Version",
+  "description": "Schema for an R release version record as returned by the METACRAN R Versions API",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "R version number using major.minor.patch format",
+      "example": "4.4.2",
+      "pattern": "^\\d+\\.\\d+\\.?\\d*$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Release date of this R version",
+      "example": "2024-10-31"
+    },
+    "nickname": {
+      "type": "string",
+      "description": "Release nickname assigned to this R version",
+      "example": "Pile of Leaves"
+    }
+  },
+  "required": ["version", "date"]
+}

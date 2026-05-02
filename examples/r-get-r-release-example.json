@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://rversions.r-pkg.org/r-release",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "version": "4.4.2",
+      "date": "2024-10-31",
+      "nickname": "Pile of Leaves"
+    }
+  }
+}

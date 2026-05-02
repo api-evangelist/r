@@ -27,10 +27,11 @@ REST API providing download statistics for R packages from the RStudio CRAN mirr
 
 ### R Versions API
 
-REST API that reports the current and previous stable releases of R, including version numbers and release dates. Used by CI tools and package managers to determine supported R versions.
+REST API reporting current and previous stable releases of R, including version numbers, release dates, and nicknames. Used by CI/CD tools and package managers to determine supported R versions.
 
 - **Base URL:** `https://rversions.r-pkg.org`
 - **Documentation:** [https://github.com/metacran/rversions.app](https://github.com/metacran/rversions.app)
+- **OpenAPI:** [openapi/r-rversions-openapi.yml](openapi/r-rversions-openapi.yml)
 
 ## OpenAPI Specifications
 
@@ -38,6 +39,7 @@ REST API that reports the current and previous stable releases of R, including v
 |-----|------|
 | METACRAN CranDB API | [openapi/r-metacran-crandb-openapi.yml](openapi/r-metacran-crandb-openapi.yml) |
 | METACRAN CranLogs API | [openapi/r-metacran-cranlogs-openapi.yml](openapi/r-metacran-cranlogs-openapi.yml) |
+| R Versions API | [openapi/r-rversions-openapi.yml](openapi/r-rversions-openapi.yml) |
 
 ## Capabilities
 
@@ -45,7 +47,7 @@ Naftiko capabilities combining the METACRAN APIs into analytics workflows.
 
 | Capability | Description |
 |-----------|-------------|
-| [capabilities/r-package-analytics.yaml](capabilities/r-package-analytics.yaml) | R package ecosystem analytics combining download stats and package metadata |
+| [capabilities/r-package-analytics.yaml](capabilities/r-package-analytics.yaml) | R package ecosystem analytics combining metadata, download statistics, and R version data |
 
 ### Shared Definitions
 
@@ -53,6 +55,7 @@ Naftiko capabilities combining the METACRAN APIs into analytics workflows.
 |-----|------|
 | METACRAN CranDB | [capabilities/shared/metacran-crandb.yaml](capabilities/shared/metacran-crandb.yaml) |
 | METACRAN CranLogs | [capabilities/shared/metacran-cranlogs.yaml](capabilities/shared/metacran-cranlogs.yaml) |
+| R Versions | [capabilities/shared/rversions.yaml](capabilities/shared/rversions.yaml) |
 
 ## JSON Schema
 
@@ -60,6 +63,7 @@ Naftiko capabilities combining the METACRAN APIs into analytics workflows.
 |--------|------|
 | CRAN Package | [json-schema/r-cran-package-schema.json](json-schema/r-cran-package-schema.json) |
 | Download Statistics | [json-schema/r-download-stats-schema.json](json-schema/r-download-stats-schema.json) |
+| R Version | [json-schema/r-version-schema.json](json-schema/r-version-schema.json) |
 
 ## JSON Structure
 
@@ -79,6 +83,7 @@ Naftiko capabilities combining the METACRAN APIs into analytics workflows.
 |---------|------|
 | Get Package Download Totals | [examples/r-get-package-download-totals-example.json](examples/r-get-package-download-totals-example.json) |
 | Get Package Metadata | [examples/r-get-package-metadata-example.json](examples/r-get-package-metadata-example.json) |
+| Get Current R Release | [examples/r-get-r-release-example.json](examples/r-get-r-release-example.json) |
 
 ## Rules
 

@@ -1,0 +1,127 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "R Versions API"
+  description: "METACRAN R Versions API returning current and historical R release versions, dates, and nicknames. Used by CI/CD pipelines and build systems to determine supported R versions."
+  tags:
+    - R
+    - Versions
+    - Releases
+    - Open Source
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds: []
+
+capability:
+  consumes:
+    - type: http
+      namespace: rversions
+      baseUri: https://rversions.r-pkg.org
+      description: "R Versions public API — no authentication required"
+      resources:
+        - name: current-release
+          path: /r-release
+          description: "Current stable R release"
+          operations:
+            - name: get-r-release
+              method: GET
+              description: "Get the current stable R release version and date"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: previous-release
+          path: /r-oldrel
+          description: "Previous (old-rel) R release"
+          operations:
+            - name: get-r-oldrel
+              method: GET
+              description: "Get the previous stable R release for backward compatibility testing"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: all-versions
+          path: /r-versions
+          description: "All historical R releases"
+          operations:
+            - name: list-r-versions
+              method: GET
+              description: "List all historical R release versions with dates and nicknames"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8103
+      namespace: rversions-rest
+      resources:
+        - path: /v1/r/release
+          name: current-release
+          operations:
+            - method: GET
+              name: get-r-release
+              call: "rversions.get-r-release"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/r/oldrel
+          name: previous-release
+          operations:
+            - method: GET
+              name: get-r-oldrel
+              call: "rversions.get-r-oldrel"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/r/versions
+          name: all-versions
+          operations:
+            - method: GET
+              name: list-r-versions
+              call: "rversions.list-r-versions"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9103
+      namespace: rversions-mcp
+      transport: http
+      tools:
+        - name: get-current-r-version
+          description: "Get the current stable R release version number and release date"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.get-r-release"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-previous-r-version
+          description: "Get the previous stable R release (oldrel) for backward compatibility testing in CI/CD pipelines"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.get-r-oldrel"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-all-r-versions
+          description: "List all historical R releases with version numbers, release dates, and nicknames"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.list-r-versions"
+          outputParameters:
+            - type: object
+              mapping: "$."

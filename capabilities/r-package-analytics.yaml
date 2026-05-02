@@ -2,7 +2,7 @@ naftiko: "1.0.0-alpha1"
 
 info:
   label: "R Package Analytics"
-  description: "R package ecosystem analytics workflow combining METACRAN CranLogs download statistics and CranDB package metadata. Used by R package maintainers, data scientists, and ecosystem researchers to analyze package adoption, trends, and ecosystem health."
+  description: "R package ecosystem analytics workflow combining METACRAN CranLogs download statistics, CranDB package metadata, and R version information. Used by R package maintainers, data scientists, CI/CD engineers, and ecosystem researchers to analyze package adoption, trends, R version compatibility, and ecosystem health."
   tags:
     - R
     - CRAN
@@ -10,6 +10,7 @@ info:
     - Downloads
     - Open Source
     - Statistics
+    - Versions
   created: "2026-05-02"
   modified: "2026-05-02"
 
@@ -21,6 +22,8 @@ capability:
       location: ./shared/metacran-cranlogs.yaml
     - import: crandb
       location: ./shared/metacran-crandb.yaml
+    - import: rversions
+      location: ./shared/rversions.yaml
 
   exposes:
     - type: rest
@@ -80,6 +83,28 @@ capability:
               with:
                 period: "rest.period"
                 count: "rest.count"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/r/release
+          name: r-release
+          description: "Current R release version"
+          operations:
+            - method: GET
+              name: get-r-release
+              description: "Get current stable R release version and date"
+              call: "rversions.get-r-release"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/r/versions
+          name: r-versions
+          description: "All R release versions"
+          operations:
+            - method: GET
+              name: list-r-versions
+              description: "List all historical R releases"
+              call: "rversions.list-r-versions"
               outputParameters:
                 - type: object
                   mapping: "$."
@@ -143,6 +168,33 @@ capability:
             readOnly: true
             openWorld: false
           call: "crandb.list-all-packages"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-current-r-version
+          description: "Get the current stable R release version number and date. Use to verify CI/CD pipelines target the latest R."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.get-r-release"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-previous-r-version
+          description: "Get the previous stable R release (oldrel) version for backward compatibility testing."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.get-r-oldrel"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-all-r-versions
+          description: "List all historical R releases with version numbers, release dates, and nicknames."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "rversions.list-r-versions"
           outputParameters:
             - type: object
               mapping: "$."

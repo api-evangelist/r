@@ -70,6 +70,8 @@ apis:
     properties:
       - type: Documentation
         url: https://github.com/metacran/rversions.app
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-rversions-openapi.yml
 common:
   - type: Website
     url: https://www.r-project.org/
