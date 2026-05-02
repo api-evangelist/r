@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://crandb.r-pkg.org/ggplot2",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Package": "ggplot2",
+      "Version": "3.4.4",
+      "Title": "Create Elegant Data Visualisations Using the Grammar of Graphics",
+      "Description": "A system for 'declaratively' creating graphics, based on 'The Grammar of Graphics'. You provide the data, tell 'ggplot2' how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.",
+      "Author": "Hadley Wickham [aut, cre], Winston Chang [aut], Lionel Henry [aut], Thomas Lin Pedersen [aut], Kohske Takahashi [aut], Claus Wilke [aut], Kara Woo [aut], Hiroaki Yutani [aut], Dewey Dunnington [aut], Posit, PBC [cph, fnd]",
+      "Maintainer": "Hadley Wickham <hadley@posit.co>",
+      "License": "MIT + file LICENSE",
+      "Depends": "R (>= 3.3)",
+      "Imports": "cli, glue, grDevices, grid, gtable (>= 0.1.1), isoband, lifecycle (> 1.0.1), MASS, mgcv, rlang (>= 1.0.0), scales (>= 1.2.0), stats, tibble, vctrs (>= 0.5.0), withr (>= 2.5.0)",
+      "Suggests": "covr, dplyr, ggplot2movies, hexbin, Hmisc, interp, knitr, lattice, mapproj, maps, maptools, multcomp, munsell, nlme, profvis, quantreg, RColorBrewer, rgeos, rmarkdown, sf, sp, svglite (>= 1.2.0.9001), testthat (>= 3.0.0), vdiffr (>= 1.0.0), xml2",
+      "URL": "https://ggplot2.tidyverse.org, https://github.com/tidyverse/ggplot2",
+      "BugReports": "https://github.com/tidyverse/ggplot2/issues",
+      "Date/Publication": "2023-10-12 21:30:02 UTC",
+      "NeedsCompilation": "no"
+    }
+  }
+}

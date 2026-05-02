@@ -1,0 +1,54 @@
+aid: r
+name: R Vocabulary
+description: >-
+  Vocabulary and terminology for the R statistical computing ecosystem, covering
+  package management, statistical computing concepts, and developer tooling.
+terms:
+  - term: CRAN
+    definition: >-
+      Comprehensive R Archive Network — the primary repository for R packages,
+      hosting over 20,000 packages with automated checking and mirroring.
+  - term: Package
+    definition: >-
+      A collection of R code, data, documentation, and tests bundled together
+      and distributed through CRAN, Bioconductor, or GitHub.
+  - term: Vignette
+    definition: >-
+      A long-form tutorial document included with an R package that explains
+      how to use the package with worked examples.
+  - term: NAMESPACE
+    definition: >-
+      A file in an R package that controls which functions are exported for
+      public use and which are imported from other packages.
+  - term: Bioconductor
+    definition: >-
+      A repository focused on bioinformatics R packages providing tools for
+      analysis of genomic, proteomic, and other biological data.
+  - term: devtools
+    definition: >-
+      An R package that provides tools for package development including
+      loading, building, testing, and submitting packages to CRAN.
+  - term: roxygen2
+    definition: >-
+      An R package that generates documentation from specially formatted
+      comments in R source code, producing .Rd files.
+  - term: tidyverse
+    definition: >-
+      A collection of R packages designed for data science sharing a common
+      design philosophy including ggplot2, dplyr, tidyr, and readr.
+  - term: R CMD check
+    definition: >-
+      The standard CRAN quality check that validates package structure,
+      documentation, tests, and code quality before submission.
+  - term: download statistics
+    definition: >-
+      CRAN package download counts aggregated from RStudio CRAN mirror
+      logs, available daily, weekly, monthly, and as grand totals.
+  - term: dependency
+    definition: >-
+      An R package required by another package; DESCRIPTION file fields
+      Imports, Depends, and Suggests define dependency relationships.
+  - term: maintainer
+    definition: >-
+      The person responsible for a CRAN package who receives bug reports,
+      submits updates, and maintains package quality standards.

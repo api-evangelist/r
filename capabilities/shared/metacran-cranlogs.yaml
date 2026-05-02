@@ -1,0 +1,152 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "METACRAN CranLogs API"
+  description: "METACRAN CranLogs REST API providing download statistics for R packages from the RStudio CRAN mirror. Supports per-package download totals, daily counts, top package rankings, and badge generation."
+  tags:
+    - R
+    - CRAN
+    - Downloads
+    - Statistics
+    - Open Source
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds: []
+
+capability:
+  consumes:
+    - type: http
+      namespace: cranlogs
+      baseUri: https://cranlogs.r-pkg.org
+      description: "METACRAN CranLogs public API — no authentication required"
+      resources:
+        - name: download-totals
+          path: /downloads/total
+          description: "Total download counts for R packages"
+          operations:
+            - name: get-package-download-totals
+              method: GET
+              description: "Get total download counts for packages over a period"
+              inputParameters:
+                - name: period
+                  in: path
+                  type: string
+                  required: true
+                  description: "Period: last-day, last-week, last-month, grand-total, or date range"
+                - name: packages
+                  in: path
+                  type: string
+                  required: true
+                  description: "Package name or comma-separated list"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: download-daily
+          path: /downloads/daily
+          description: "Daily download counts for R packages"
+          operations:
+            - name: get-package-download-daily
+              method: GET
+              description: "Get daily download breakdown for packages over a period"
+              inputParameters:
+                - name: period
+                  in: path
+                  type: string
+                  required: true
+                  description: "Period or date range"
+                - name: packages
+                  in: path
+                  type: string
+                  required: true
+                  description: "Package name or comma-separated list"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: top-packages
+          path: /top
+          description: "Most-downloaded CRAN packages"
+          operations:
+            - name: get-top-packages
+              method: GET
+              description: "Get the most-downloaded CRAN packages for a period"
+              inputParameters:
+                - name: period
+                  in: path
+                  type: string
+                  required: true
+                  description: "Period: last-day, last-week, last-month"
+                - name: count
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Number of top packages (max 100)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: cranlogs-rest
+      resources:
+        - path: /v1/downloads/total/{period}/{packages}
+          name: download-totals
+          operations:
+            - method: GET
+              name: get-package-download-totals
+              call: "cranlogs.get-package-download-totals"
+              with:
+                period: "rest.period"
+                packages: "rest.packages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/top/{period}/{count}
+          name: top-packages
+          operations:
+            - method: GET
+              name: get-top-packages
+              call: "cranlogs.get-top-packages"
+              with:
+                period: "rest.period"
+                count: "rest.count"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: cranlogs-mcp
+      transport: http
+      tools:
+        - name: get-package-download-totals
+          description: "Get total download counts for R packages from the CRAN mirror"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "cranlogs.get-package-download-totals"
+          with:
+            period: "tools.period"
+            packages: "tools.packages"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-top-packages
+          description: "Get the most-downloaded R packages for a time period"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "cranlogs.get-top-packages"
+          with:
+            period: "tools.period"
+            count: "tools.count"
+          outputParameters:
+            - type: object
+              mapping: "$."

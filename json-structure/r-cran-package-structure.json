@@ -1,0 +1,90 @@
+{
+  "name": "CRAN Package",
+  "description": "Structure of a CRAN R package metadata record",
+  "fields": [
+    {
+      "name": "Package",
+      "type": "string",
+      "required": true,
+      "description": "Package name on CRAN"
+    },
+    {
+      "name": "Version",
+      "type": "string",
+      "required": true,
+      "description": "Semantic version string"
+    },
+    {
+      "name": "Title",
+      "type": "string",
+      "required": true,
+      "description": "Short one-line title"
+    },
+    {
+      "name": "Description",
+      "type": "string",
+      "required": true,
+      "description": "Full package description"
+    },
+    {
+      "name": "Author",
+      "type": "string",
+      "required": false,
+      "description": "Package author(s)"
+    },
+    {
+      "name": "Maintainer",
+      "type": "string",
+      "required": true,
+      "description": "Package maintainer name and email"
+    },
+    {
+      "name": "License",
+      "type": "string",
+      "required": true,
+      "description": "SPDX license identifier"
+    },
+    {
+      "name": "Depends",
+      "type": "string",
+      "required": false,
+      "description": "Required R version and package dependencies"
+    },
+    {
+      "name": "Imports",
+      "type": "string",
+      "required": false,
+      "description": "Runtime package imports"
+    },
+    {
+      "name": "Suggests",
+      "type": "string",
+      "required": false,
+      "description": "Suggested optional packages"
+    },
+    {
+      "name": "Date",
+      "type": "date",
+      "required": false,
+      "description": "Package release date"
+    },
+    {
+      "name": "URL",
+      "type": "string",
+      "required": false,
+      "description": "Package homepage URL"
+    },
+    {
+      "name": "BugReports",
+      "type": "uri",
+      "required": false,
+      "description": "Bug report submission URL"
+    },
+    {
+      "name": "NeedsCompilation",
+      "type": "string",
+      "required": false,
+      "description": "Whether package requires compilation (yes/no)"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cranlogs.r-pkg.org/downloads/total/last-week/ggplot2",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "package": "ggplot2",
+        "start": "2024-01-22",
+        "end": "2024-01-28",
+        "downloads": 142835
+      }
+    ]
+  }
+}

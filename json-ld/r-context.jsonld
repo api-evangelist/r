@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "r": "https://r-project.org/terms/",
+
+    "Package": {
+      "@id": "doap:Project",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "version": "doap:revision",
+    "description": "schema:description",
+    "title": "dcterms:title",
+    "author": "dcterms:creator",
+    "maintainer": {
+      "@id": "dcterms:maintainer",
+      "@type": "schema:Person"
+    },
+    "license": {
+      "@id": "doap:license",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "downloads": {
+      "@id": "schema:downloadCount",
+      "@type": "xsd:integer"
+    },
+    "package": "schema:name",
+    "start": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "end": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "day": {
+      "@id": "schema:date",
+      "@type": "xsd:date"
+    },
+    "depends": "doap:implements",
+    "imports": {
+      "@id": "schema:softwareRequirements",
+      "@type": "@id"
+    },
+    "suggests": "schema:softwareRequirements",
+    "repository": {
+      "@id": "doap:repository",
+      "@type": "@id"
+    }
+  }
+}

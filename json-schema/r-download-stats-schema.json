@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/json-schema/r-download-stats-schema.json",
+  "title": "CRAN Package Download Statistics",
+  "description": "Schema for CRAN package download statistics from the METACRAN CranLogs API",
+  "type": "object",
+  "properties": {
+    "package": {
+      "type": "string",
+      "description": "R package name",
+      "example": "ggplot2"
+    },
+    "start": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the download period",
+      "example": "2024-01-01"
+    },
+    "end": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the download period",
+      "example": "2024-01-07"
+    },
+    "downloads": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Total download count for the period",
+          "example": 142835
+        },
+        {
+          "type": "array",
+          "description": "Daily breakdown of download counts",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string",
+                "format": "date",
+                "description": "Date of the download count"
+              },
+              "downloads": {
+                "type": "integer",
+                "description": "Downloads on that day"
+              }
+            },
+            "required": ["day", "downloads"]
+          }
+        }
+      ]
+    }
+  },
+  "required": ["package", "start", "end", "downloads"]
+}
