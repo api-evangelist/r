@@ -1,0 +1,13 @@
+{
+  "repo": "r",
+  "feeds": [
+    {
+      "source": "https://blog.r-project.org/",
+      "feed_url": "https://blog.r-project.org/index.xml",
+      "saved": 10,
+      "title": "The R Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:24Z"
+}
