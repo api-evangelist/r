@@ -1,0 +1,237 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: METACRAN CranDB API — Packages
+  description: 'METACRAN CranDB API — Packages. 5 operations. Lead operation: List All Package Vignettes. Self-contained Naftiko
+    capability covering one R business surface.'
+  tags:
+  - R
+  - Packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    R_API_KEY: R_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: metacran-crandb-packages
+    baseUri: https://crandb.r-pkg.org
+    description: METACRAN CranDB API — Packages business capability. Self-contained, no shared references.
+    resources:
+    - name: --allvign
+      path: /-/allvign
+      operations:
+      - name: listpackagevignettes
+        method: GET
+        description: List All Package Vignettes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: --desc
+      path: /-/desc
+      operations:
+      - name: listpackagedescriptions
+        method: GET
+        description: List Package Descriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return
+        - name: skip
+          in: query
+          type: integer
+          description: Number of records to skip for pagination
+    - name: --pkgs
+      path: /-/pkgs
+      operations:
+      - name: listallpackages
+        method: GET
+        description: List All CRAN Packages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: package
+      path: /{package}
+      operations:
+      - name: getpackage
+        method: GET
+        description: Get Package Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package
+          in: path
+          type: string
+          description: CRAN package name (case-sensitive)
+          required: true
+    - name: package-version
+      path: /{package}/{version}
+      operations:
+      - name: getpackageversion
+        method: GET
+        description: Get Package Version Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package
+          in: path
+          type: string
+          description: CRAN package name
+          required: true
+        - name: version
+          in: path
+          type: string
+          description: Package version string, or "all" for all versions
+          required: true
+  exposes:
+  - type: rest
+    namespace: metacran-crandb-packages-rest
+    port: 8080
+    description: REST adapter for METACRAN CranDB API — Packages. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1//allvign
+      name: allvign
+      description: REST surface for --allvign.
+      operations:
+      - method: GET
+        name: listpackagevignettes
+        description: List All Package Vignettes
+        call: metacran-crandb-packages.listpackagevignettes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//desc
+      name: desc
+      description: REST surface for --desc.
+      operations:
+      - method: GET
+        name: listpackagedescriptions
+        description: List Package Descriptions
+        call: metacran-crandb-packages.listpackagedescriptions
+        with:
+          limit: rest.limit
+          skip: rest.skip
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//pkgs
+      name: pkgs
+      description: REST surface for --pkgs.
+      operations:
+      - method: GET
+        name: listallpackages
+        description: List All CRAN Packages
+        call: metacran-crandb-packages.listallpackages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{package}
+      name: package
+      description: REST surface for package.
+      operations:
+      - method: GET
+        name: getpackage
+        description: Get Package Metadata
+        call: metacran-crandb-packages.getpackage
+        with:
+          package: rest.package
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{package}/{version}
+      name: package-version
+      description: REST surface for package-version.
+      operations:
+      - method: GET
+        name: getpackageversion
+        description: Get Package Version Metadata
+        call: metacran-crandb-packages.getpackageversion
+        with:
+          package: rest.package
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: metacran-crandb-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for METACRAN CranDB API — Packages. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-all-package-vignettes
+      description: List All Package Vignettes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-crandb-packages.listpackagevignettes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-package-descriptions
+      description: List Package Descriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-crandb-packages.listpackagedescriptions
+      with:
+        limit: tools.limit
+        skip: tools.skip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-cran-packages
+      description: List All CRAN Packages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-crandb-packages.listallpackages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-metadata
+      description: Get Package Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-crandb-packages.getpackage
+      with:
+        package: tools.package
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-version-metadata
+      description: Get Package Version Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-crandb-packages.getpackageversion
+      with:
+        package: tools.package
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.

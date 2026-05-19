@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: METACRAN CranLogs API — Downloads
+  description: 'METACRAN CranLogs API — Downloads. 2 operations. Lead operation: Get Package Daily Downloads. Self-contained
+    Naftiko capability covering one R business surface.'
+  tags:
+  - R
+  - Downloads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    R_API_KEY: R_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: metacran-cranlogs-downloads
+    baseUri: https://cranlogs.r-pkg.org
+    description: METACRAN CranLogs API — Downloads business capability. Self-contained, no shared references.
+    resources:
+    - name: downloads-daily-period-packages
+      path: /downloads/daily/{period}/{packages}
+      operations:
+      - name: getpackagedownloaddaily
+        method: GET
+        description: Get Package Daily Downloads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: period
+          in: path
+          type: string
+          description: Time period (last-day, last-week, last-month, or date range)
+          required: true
+        - name: packages
+          in: path
+          type: string
+          description: Package name or comma-separated list
+          required: true
+    - name: downloads-total-period-packages
+      path: /downloads/total/{period}/{packages}
+      operations:
+      - name: getpackagedownloadtotals
+        method: GET
+        description: Get Package Download Totals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: period
+          in: path
+          type: string
+          description: Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like
+            2023-01-01:2023-12-31.
+          required: true
+        - name: packages
+          in: path
+          type: string
+          description: Package name or comma-separated list of package names.
+          required: true
+  exposes:
+  - type: rest
+    namespace: metacran-cranlogs-downloads-rest
+    port: 8080
+    description: REST adapter for METACRAN CranLogs API — Downloads. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/downloads/daily/{period}/{packages}
+      name: downloads-daily-period-packages
+      description: REST surface for downloads-daily-period-packages.
+      operations:
+      - method: GET
+        name: getpackagedownloaddaily
+        description: Get Package Daily Downloads
+        call: metacran-cranlogs-downloads.getpackagedownloaddaily
+        with:
+          period: rest.period
+          packages: rest.packages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/downloads/total/{period}/{packages}
+      name: downloads-total-period-packages
+      description: REST surface for downloads-total-period-packages.
+      operations:
+      - method: GET
+        name: getpackagedownloadtotals
+        description: Get Package Download Totals
+        call: metacran-cranlogs-downloads.getpackagedownloadtotals
+        with:
+          period: rest.period
+          packages: rest.packages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: metacran-cranlogs-downloads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for METACRAN CranLogs API — Downloads. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-package-daily-downloads
+      description: Get Package Daily Downloads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-cranlogs-downloads.getpackagedownloaddaily
+      with:
+        period: tools.period
+        packages: tools.packages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-download-totals
+      description: Get Package Download Totals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-cranlogs-downloads.getpackagedownloadtotals
+      with:
+        period: tools.period
+        packages: tools.packages
+      outputParameters:
+      - type: object
+        mapping: $.

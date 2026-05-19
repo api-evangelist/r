@@ -1,0 +1,84 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: METACRAN CranLogs API — Badges
+  description: 'METACRAN CranLogs API — Badges. 1 operations. Lead operation: Get Download Count Badge. Self-contained Naftiko
+    capability covering one R business surface.'
+  tags:
+  - R
+  - Badges
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    R_API_KEY: R_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: metacran-cranlogs-badges
+    baseUri: https://cranlogs.r-pkg.org
+    description: METACRAN CranLogs API — Badges business capability. Self-contained, no shared references.
+    resources:
+    - name: badges-period-package
+      path: /badges/{period}/{package}
+      operations:
+      - name: getdownloadbadge
+        method: GET
+        description: Get Download Count Badge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: period
+          in: path
+          type: string
+          description: Badge period (last-day, last-week, grand-total)
+          required: true
+        - name: package
+          in: path
+          type: string
+          description: R package name
+          required: true
+  exposes:
+  - type: rest
+    namespace: metacran-cranlogs-badges-rest
+    port: 8080
+    description: REST adapter for METACRAN CranLogs API — Badges. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/badges/{period}/{package}
+      name: badges-period-package
+      description: REST surface for badges-period-package.
+      operations:
+      - method: GET
+        name: getdownloadbadge
+        description: Get Download Count Badge
+        call: metacran-cranlogs-badges.getdownloadbadge
+        with:
+          period: rest.period
+          package: rest.package
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: metacran-cranlogs-badges-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for METACRAN CranLogs API — Badges. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-download-count-badge
+      description: Get Download Count Badge
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metacran-cranlogs-badges.getdownloadbadge
+      with:
+        period: tools.period
+        package: tools.package
+      outputParameters:
+      - type: object
+        mapping: $.
