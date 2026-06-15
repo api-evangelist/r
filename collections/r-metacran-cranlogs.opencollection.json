@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "METACRAN CranLogs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Package Download Totals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cranlogs.r-pkg.org/downloads/total/:period/:packages",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like 2023-01-01:2023-12-31."
+              },
+              {
+                "name": "packages",
+                "value": "",
+                "type": "path",
+                "description": "Package name or comma-separated list of package names."
+              }
+            ]
+          },
+          "docs": "Returns the total number of downloads for one or more R packages over the specified time period from the RStudio CRAN mirror."
+        },
+        {
+          "info": {
+            "name": "Get Package Daily Downloads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cranlogs.r-pkg.org/downloads/daily/:period/:packages",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period (last-day, last-week, last-month, or date range)"
+              },
+              {
+                "name": "packages",
+                "value": "",
+                "type": "path",
+                "description": "Package name or comma-separated list"
+              }
+            ]
+          },
+          "docs": "Returns daily download counts for one or more R packages over the specified time period."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Top Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Top Downloaded Packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cranlogs.r-pkg.org/top/:period/:count",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period for ranking (last-day, last-week, last-month)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "path",
+                "description": "Number of top packages to return (max 100)"
+              }
+            ]
+          },
+          "docs": "Returns the most-downloaded CRAN packages for the specified time period. Count is limited to a maximum of 100."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Badges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Download Count Badge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cranlogs.r-pkg.org/badges/:period/:package",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Badge period (last-day, last-week, grand-total)"
+              },
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "R package name"
+              }
+            ]
+          },
+          "docs": "Returns an SVG badge showing the download count for an R package over the specified period. Suitable for embedding in README files."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

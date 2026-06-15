@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "R Versions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Versions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current R Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rversions.r-pkg.org/r-release"
+          },
+          "docs": "Returns the current stable release of R, including the version number and release date."
+        },
+        {
+          "info": {
+            "name": "Get Current R Release for Windows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rversions.r-pkg.org/r-release-win"
+          },
+          "docs": "Returns the current stable release of R for Windows, including version number and release date."
+        },
+        {
+          "info": {
+            "name": "Get Current R Release for macOS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rversions.r-pkg.org/r-release-macos"
+          },
+          "docs": "Returns the current stable release of R for macOS, including version number and release date."
+        },
+        {
+          "info": {
+            "name": "Get Previous R Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rversions.r-pkg.org/r-oldrel"
+          },
+          "docs": "Returns the previous stable release of R (oldrel), useful for testing backward compatibility in CI pipelines."
+        },
+        {
+          "info": {
+            "name": "List All R Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rversions.r-pkg.org/r-versions"
+          },
+          "docs": "Returns all historical R releases including version numbers, release dates, and nicknames."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

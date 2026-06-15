@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "f7023e98-975a-4409-999e-b37a6e509c72",
+      "name": "Packages",
+      "description": {
+        "content": "CRAN package metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a671d66-cac1-42ff-a735-613ffae68ed4",
+          "name": "Get Package Metadata",
+          "request": {
+            "name": "Get Package Metadata",
+            "description": {
+              "content": "Returns metadata for the latest version of an R package on CRAN, including description, version, dependencies, maintainer, license, and publication date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":package"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) CRAN package name (case-sensitive)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a375b96-e0be-46c3-b55a-75afb09b12f7",
+              "name": "Package metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":package"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) CRAN package name (case-sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Package\": \"ggplot2\",\n  \"Version\": \"3.4.4\",\n  \"Title\": \"Create Elegant Data Visualisations Using the Grammar of Graphics\",\n  \"Description\": \"string\",\n  \"Author\": \"string\",\n  \"Maintainer\": \"Hadley Wickham <hadley@posit.co>\",\n  \"License\": \"MIT + file LICENSE\",\n  \"Depends\": \"string\",\n  \"Imports\": \"string\",\n  \"Suggests\": \"string\",\n  \"Date\": \"1968-09-12\",\n  \"URL\": \"string\",\n  \"BugReports\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ad5b00d-0f3a-4768-a6a8-c3c1e2a93571",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":package"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) CRAN package name (case-sensitive)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37d842c5-f7e4-41ba-920e-b92dc9d680c7",
+          "name": "Get Package Version Metadata",
+          "request": {
+            "name": "Get Package Version Metadata",
+            "description": {
+              "content": "Returns metadata for a specific version of an R package. Use \"all\" as the version to retrieve all versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":package",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) CRAN package name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Package version string, or \"all\" for all versions"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ad39857-6655-495c-ab38-e0eda6e562a9",
+              "name": "Package version metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":package",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) CRAN package name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Package version string, or \"all\" for all versions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Package\": \"ggplot2\",\n  \"Version\": \"3.4.4\",\n  \"Title\": \"Create Elegant Data Visualisations Using the Grammar of Graphics\",\n  \"Description\": \"string\",\n  \"Author\": \"string\",\n  \"Maintainer\": \"Hadley Wickham <hadley@posit.co>\",\n  \"License\": \"MIT + file LICENSE\",\n  \"Depends\": \"string\",\n  \"Imports\": \"string\",\n  \"Suggests\": \"string\",\n  \"Date\": \"1968-09-12\",\n  \"URL\": \"string\",\n  \"BugReports\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea60d2f6-2688-46fb-b364-261a63d27fac",
+              "name": "Package or version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":package",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) CRAN package name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Package version string, or \"all\" for all versions"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a897ab3a-2062-4b2a-a415-e8253bb6d14c",
+          "name": "List All CRAN Packages",
+          "request": {
+            "name": "List All CRAN Packages",
+            "description": {
+              "content": "Returns a list of all package names currently available on CRAN along with their latest versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "-",
+                "pkgs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "132a9e40-7649-4422-b6f6-ab3f00556a6a",
+              "name": "All CRAN packages and versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "-",
+                    "pkgs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49d8d08a-7ecb-4146-b355-77acdc4ee874",
+          "name": "List Package Descriptions",
+          "request": {
+            "name": "List Package Descriptions",
+            "description": {
+              "content": "Returns name, title, and version for all CRAN packages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "-",
+                "desc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22ded869-b877-422d-85f3-466f5058f077",
+              "name": "Package name-title-version list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "-",
+                    "desc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"dplyr\",\n    \"title\": \"A Grammar of Data Manipulation\",\n    \"version\": \"1.1.4\"\n  },\n  {\n    \"name\": \"dplyr\",\n    \"title\": \"A Grammar of Data Manipulation\",\n    \"version\": \"1.1.4\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7826363-a9a9-42e5-9239-e79ebdc108e4",
+          "name": "List All Package Vignettes",
+          "request": {
+            "name": "List All Package Vignettes",
+            "description": {
+              "content": "Returns all vignettes available for CRAN packages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "-",
+                "allvign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd142c7f-16c1-4076-96fd-831bc17c171f",
+              "name": "Vignette list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "-",
+                    "allvign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"package\": \"string\",\n    \"vignette\": \"string\",\n    \"title\": \"string\"\n  },\n  {\n    \"package\": \"string\",\n    \"vignette\": \"string\",\n    \"title\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bfd73a9f-8fac-4675-8347-7a9aa0e4b411",
+      "name": "Search",
+      "description": {
+        "content": "Package search operations",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://crandb.r-pkg.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b6e4e0c-767d-4bd2-9fa2-1e9628f4ad2e",
+    "name": "METACRAN CranDB API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.\n\nContact Support:\n Name: METACRAN",
+      "type": "text/plain"
+    }
+  }
+}

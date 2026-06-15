@@ -1,0 +1,382 @@
+{
+  "item": [
+    {
+      "id": "b825aeac-93c0-4726-9338-592298dd0ab2",
+      "name": "Versions",
+      "description": {
+        "content": "R release version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a5a3b99-ea34-4ff5-a29b-c4a6294a21df",
+          "name": "Get Current R Release",
+          "request": {
+            "name": "Get Current R Release",
+            "description": {
+              "content": "Returns the current stable release of R, including the version number and release date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r-release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74e9c7a8-759a-4680-b516-5af95e6fb5ef",
+              "name": "Current R release version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r-release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"4.4.2\",\n  \"date\": \"2024-10-31\",\n  \"nickname\": \"Pile of Leaves\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03cb87f5-cbb0-45c5-a2e4-17aaad4b8247",
+          "name": "Get Current R Release for Windows",
+          "request": {
+            "name": "Get Current R Release for Windows",
+            "description": {
+              "content": "Returns the current stable release of R for Windows, including version number and release date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r-release-win"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0cdd29e-4c91-45a0-bb92-e9532848d1dd",
+              "name": "Current R release version for Windows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r-release-win"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"4.4.2\",\n  \"date\": \"2024-10-31\",\n  \"nickname\": \"Pile of Leaves\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "095f71f5-eba3-4c95-abbd-a07e0d553458",
+          "name": "Get Current R Release for macOS",
+          "request": {
+            "name": "Get Current R Release for macOS",
+            "description": {
+              "content": "Returns the current stable release of R for macOS, including version number and release date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r-release-macos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "719a39d2-bf19-4b44-bf75-100d859dd394",
+              "name": "Current R release version for macOS",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r-release-macos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"4.4.2\",\n  \"date\": \"2024-10-31\",\n  \"nickname\": \"Pile of Leaves\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2031e00a-641d-4f27-bd48-d9037a0cb946",
+          "name": "Get Previous R Release",
+          "request": {
+            "name": "Get Previous R Release",
+            "description": {
+              "content": "Returns the previous stable release of R (oldrel), useful for testing backward compatibility in CI pipelines.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r-oldrel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "123cc6b4-274e-475f-911f-a3dcab050cb6",
+              "name": "Previous R release version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r-oldrel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"4.4.2\",\n  \"date\": \"2024-10-31\",\n  \"nickname\": \"Pile of Leaves\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd4805a4-0478-4147-8c27-a3f039c29270",
+          "name": "List All R Versions",
+          "request": {
+            "name": "List All R Versions",
+            "description": {
+              "content": "Returns all historical R releases including version numbers, release dates, and nicknames.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r-versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b93a968c-2257-4dd2-961e-bc6311c401da",
+              "name": "List of all R versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r-versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"version\": \"4.4.2\",\n    \"date\": \"2024-10-31\",\n    \"nickname\": \"Pile of Leaves\"\n  },\n  {\n    \"version\": \"4.4.2\",\n    \"date\": \"2024-10-31\",\n    \"nickname\": \"Pile of Leaves\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rversions.r-pkg.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3df95748-1c7a-4722-b746-2a33ed2d4fb2",
+    "name": "R Versions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing the current and previous stable releases of R, including version numbers and release dates. Used by CI/CD tools, package managers, and build systems to determine supported R versions. Maintained by the METACRAN project.\n\nContact Support:\n Name: METACRAN",
+      "type": "text/plain"
+    }
+  }
+}

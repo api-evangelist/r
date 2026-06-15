@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "METACRAN CranDB API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Package Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/:package",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "CRAN package name (case-sensitive)"
+              }
+            ]
+          },
+          "docs": "Returns metadata for the latest version of an R package on CRAN, including description, version, dependencies, maintainer, license, and publication date."
+        },
+        {
+          "info": {
+            "name": "Get Package Version Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/:package/:version",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "CRAN package name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Package version string, or \"all\" for all versions"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific version of an R package. Use \"all\" as the version to retrieve all versions."
+        },
+        {
+          "info": {
+            "name": "List All CRAN Packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/-/pkgs"
+          },
+          "docs": "Returns a list of all package names currently available on CRAN along with their latest versions."
+        },
+        {
+          "info": {
+            "name": "List Package Descriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/-/desc",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Returns name, title, and version for all CRAN packages."
+        },
+        {
+          "info": {
+            "name": "List All Package Vignettes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/-/allvign"
+          },
+          "docs": "Returns all vignettes available for CRAN packages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

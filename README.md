@@ -1,105 +1,113 @@
-# R
+# R (r)
 
 R is a free, open-source programming language and statistical computing environment maintained by the R Core Team and supported by the R Foundation. It provides a wide variety of statistical and graphical techniques and is highly extensible through its package ecosystem on CRAN (Comprehensive R Archive Network), Bioconductor, and GitHub. R is widely used among statisticians, data scientists, and researchers for data analysis, visualization, and reproducible research.
 
-**Website:** [https://www.r-project.org/](https://www.r-project.org/)
-**Package Registry:** [https://cran.r-project.org/](https://cran.r-project.org/)
-**GitHub Org:** [https://github.com/r-lib](https://github.com/r-lib)
-**APIs.yml:** [https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+
+## Tags
+
+- R
+- Statistics
+- Data Science
+- Open Source
+- Programming Language
+
+## Timestamps
+
+- **Created:** 2025-01-01
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### METACRAN CranDB API
 
-CouchDB-based REST API providing programmatic access to metadata for all CRAN R packages. Supports package lookup, version history, and package dependency data in JSON format. No authentication required.
+CouchDB-based REST API providing programmatic access to metadata for all CRAN R packages. Supports package lookup, version history, and package dependency data in JSON format.
 
+- **Human URL:** [https://github.com/metacran/crandb](https://github.com/metacran/crandb)
 - **Base URL:** `https://crandb.r-pkg.org`
-- **Documentation:** [https://github.com/metacran/crandb](https://github.com/metacran/crandb)
-- **OpenAPI:** [openapi/r-metacran-crandb-openapi.yml](openapi/r-metacran-crandb-openapi.yml)
+
+#### Tags
+
+- CRAN
+- Packages
+- Metadata
+
+#### Properties
+
+- [Documentation](https://github.com/metacran/crandb)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-metacran-crandb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### METACRAN CranLogs API
 
-REST API providing download statistics for R packages from the RStudio CRAN mirror. Supports daily, weekly, monthly, and grand-total download counts with badge generation endpoints. No authentication required.
+REST API providing download statistics for R packages from the RStudio CRAN mirror. Supports daily, weekly, monthly, and grand-total download counts with badge generation endpoints.
 
+- **Human URL:** [https://github.com/metacran/cranlogs.app](https://github.com/metacran/cranlogs.app)
 - **Base URL:** `https://cranlogs.r-pkg.org`
-- **Documentation:** [https://github.com/metacran/cranlogs.app](https://github.com/metacran/cranlogs.app)
-- **OpenAPI:** [openapi/r-metacran-cranlogs-openapi.yml](openapi/r-metacran-cranlogs-openapi.yml)
+
+#### Tags
+
+- CRAN
+- Downloads
+- Statistics
+
+#### Properties
+
+- [Documentation](https://github.com/metacran/cranlogs.app)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-metacran-cranlogs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### R Versions API
 
-REST API reporting current and previous stable releases of R, including version numbers, release dates, and nicknames. Used by CI/CD tools and package managers to determine supported R versions.
+REST API that reports the current and previous stable releases of R, including version numbers and release dates. Used by CI tools and package managers to determine supported R versions.
 
+- **Human URL:** [https://github.com/metacran/rversions.app](https://github.com/metacran/rversions.app)
 - **Base URL:** `https://rversions.r-pkg.org`
-- **Documentation:** [https://github.com/metacran/rversions.app](https://github.com/metacran/rversions.app)
-- **OpenAPI:** [openapi/r-rversions-openapi.yml](openapi/r-rversions-openapi.yml)
 
-## OpenAPI Specifications
+#### Tags
 
-| API | File |
-|-----|------|
-| METACRAN CranDB API | [openapi/r-metacran-crandb-openapi.yml](openapi/r-metacran-crandb-openapi.yml) |
-| METACRAN CranLogs API | [openapi/r-metacran-cranlogs-openapi.yml](openapi/r-metacran-cranlogs-openapi.yml) |
-| R Versions API | [openapi/r-rversions-openapi.yml](openapi/r-rversions-openapi.yml) |
+- R
+- Versions
+- Releases
 
-## Capabilities
+#### Properties
 
-Naftiko capabilities combining the METACRAN APIs into analytics workflows.
+- [Documentation](https://github.com/metacran/rversions.app)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-rversions-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| Capability | Description |
-|-----------|-------------|
-| [capabilities/r-package-analytics.yaml](capabilities/r-package-analytics.yaml) | R package ecosystem analytics combining metadata, download statistics, and R version data |
+## Common Properties
 
-### Shared Definitions
-
-| API | File |
-|-----|------|
-| METACRAN CranDB | [capabilities/shared/metacran-crandb.yaml](capabilities/shared/metacran-crandb.yaml) |
-| METACRAN CranLogs | [capabilities/shared/metacran-cranlogs.yaml](capabilities/shared/metacran-cranlogs.yaml) |
-| R Versions | [capabilities/shared/rversions.yaml](capabilities/shared/rversions.yaml) |
-
-## JSON Schema
-
-| Schema | File |
-|--------|------|
-| CRAN Package | [json-schema/r-cran-package-schema.json](json-schema/r-cran-package-schema.json) |
-| Download Statistics | [json-schema/r-download-stats-schema.json](json-schema/r-download-stats-schema.json) |
-| R Version | [json-schema/r-version-schema.json](json-schema/r-version-schema.json) |
-
-## JSON Structure
-
-| Structure | File |
-|-----------|------|
-| CRAN Package | [json-structure/r-cran-package-structure.json](json-structure/r-cran-package-structure.json) |
-
-## JSON-LD
-
-| Context | File |
-|---------|------|
-| R Context | [json-ld/r-context.jsonld](json-ld/r-context.jsonld) |
-
-## Examples
-
-| Example | File |
-|---------|------|
-| Get Package Download Totals | [examples/r-get-package-download-totals-example.json](examples/r-get-package-download-totals-example.json) |
-| Get Package Metadata | [examples/r-get-package-metadata-example.json](examples/r-get-package-metadata-example.json) |
-| Get Current R Release | [examples/r-get-r-release-example.json](examples/r-get-r-release-example.json) |
-
-## Rules
-
-| Ruleset | File |
-|---------|------|
-| R Spectral Rules | [rules/r-spectral-rules.yml](rules/r-spectral-rules.yml) |
-
-## Vocabulary
-
-| Vocabulary | File |
-|-----------|------|
-| R Vocabulary | [vocabulary/r-vocabulary.yml](vocabulary/r-vocabulary.yml) |
-
-## Tags
-
-R, Statistics, Data Science, Open Source, Programming Language, CRAN
+- [Website](https://www.r-project.org/)
+- [Documentation](https://cran.r-project.org/manuals.html)
+- [Git Hub Org](https://github.com/r-lib)
+- [Git Hub Org](https://github.com/r-devel)
+- [Package Registry](https://cran.r-project.org/)
+- [Package Registry](https://bioconductor.org/)
+- [Package Search](https://www.rdocumentation.org/)
+- [Package Search](https://rdrr.io/)
+- [Blog](https://blog.r-project.org/)
+- [Forum](https://stat.ethz.ch/mailman/listinfo/r-help)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/r)
 
 ## Maintainers
 
