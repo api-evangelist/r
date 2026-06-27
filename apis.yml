@@ -86,7 +86,7 @@ common:
     url: https://rdrr.io/
   - type: Blog
     url: https://blog.r-project.org/
-  - type: Forum
+  - type: Forums
     url: https://stat.ethz.ch/mailman/listinfo/r-help
   - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/r
