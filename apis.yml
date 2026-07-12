@@ -68,6 +68,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-rversions-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/r-domain-security.yml
   - type: Website
     url: https://www.r-project.org/
   - type: Documentation
