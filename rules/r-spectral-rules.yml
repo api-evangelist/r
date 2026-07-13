@@ -1,50 +1,62 @@
-extends: spectral:oas
+# r — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 3/3 servers on r-pkg.org
+#   - path-params-casing: snake @ 100% (n=11)
+#   - operationid-casing: camel @ 100% (n=14)
+#   - schema-names-casing: pascal @ 100% (n=10)
+#   - schema-properties-casing: snake @ 68% (n=40)
+#   - pagination params observed: ['limit']
+#   - merge: kept 7 existing, added 6 measured, upgraded 0
+#   - added: servers-https-only, servers-expected-domain, path-params-casing, schema-names-casing, schema-properties-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   r-operation-summary-title-case:
     description: All operation summaries must use Title Case
-    message: "Operation summary '{{value}}' must use Title Case"
+    message: Operation summary '{{value}}' must use Title Case
     severity: warn
-    given: "$.paths[*][*].summary"
+    given: $.paths[*][*].summary
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]*(\\s[A-Z][a-zA-Z0-9]*)*$"
-
+        match: ^[A-Z][a-zA-Z0-9]*(\s[A-Z][a-zA-Z0-9]*)*$
   r-tags-title-case:
     description: All tags must use Title Case
-    message: "Tag '{{value}}' must use Title Case"
+    message: Tag '{{value}}' must use Title Case
     severity: warn
-    given: "$.paths[*][*].tags[*]"
+    given: $.paths[*][*].tags[*]
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]*(\\s[A-Z][a-zA-Z0-9]*)*$"
-
+        match: ^[A-Z][a-zA-Z0-9]*(\s[A-Z][a-zA-Z0-9]*)*$
   r-operation-ids-must-be-camel-case:
     description: Operation IDs must use camelCase
-    message: "Operation ID '{{value}}' must use camelCase"
+    message: Operation ID '{{value}}' must use camelCase
     severity: warn
-    given: "$.paths[*][*].operationId"
+    given: $.paths[*][*].operationId
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]*$"
-
+        match: ^[a-z][a-zA-Z0-9]*$
   r-paths-kebab-case:
     description: Path segments must use kebab-case
-    message: "Path segment must use kebab-case (no underscores or uppercase)"
+    message: Path segment must use kebab-case (no underscores or uppercase)
     severity: warn
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        notMatch: "[A-Z_]"
-
+        notMatch: '[A-Z_]'
   r-responses-must-include-success:
     description: All operations must define at least one 2xx response
-    message: "Operation must define a 2xx success response"
+    message: Operation must define a 2xx success response
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses
       function: schema
@@ -52,22 +64,68 @@ rules:
         schema:
           type: object
           minProperties: 1
-
   r-parameters-must-have-descriptions:
     description: All parameters must have descriptions
-    message: "Parameter '{{value}}' must have a description"
+    message: Parameter '{{value}}' must have a description
     severity: warn
-    given: "$.paths[*][*].parameters[*]"
+    given: $.paths[*][*].parameters[*]
     then:
       field: description
       function: truthy
-
   r-components-schemas-pascal-case:
     description: Schema component names must use PascalCase
-    message: "Schema name '{{value}}' must use PascalCase"
+    message: Schema name '{{value}}' must use PascalCase
     severity: warn
-    given: "$.components.schemas[*]~"
+    given: $.components.schemas[*]~
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]*$"
+        match: ^[A-Z][a-zA-Z0-9]*$
+  servers-https-only:
+    description: Server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://
+  servers-expected-domain:
+    description: Server URLs should be on the r-pkg.org domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: r\-pkg\.org
+  path-params-casing:
+    description: Path parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
