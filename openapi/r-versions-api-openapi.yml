@@ -1,11 +1,7 @@
 openapi: 3.0.3
 info:
-  title: R Versions API
-  description: >-
-    REST API providing the current and previous stable releases of R, including
-    version numbers and release dates. Used by CI/CD tools, package managers,
-    and build systems to determine supported R versions. Maintained by the
-    METACRAN project.
+  title: METACRAN CranDB Badges Versions API
+  description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
   version: 1.0.0
   contact:
     name: METACRAN
@@ -14,21 +10,19 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: https://rversions.r-pkg.org
-    description: R Versions API production server
+- url: https://crandb.r-pkg.org
+  description: METACRAN CranDB production server
 tags:
-  - name: Versions
-    description: R release version information
+- name: Versions
+  description: R release version information
 paths:
   /r-release:
     get:
       operationId: getRRelease
       summary: Get Current R Release
-      description: >-
-        Returns the current stable release of R, including the version number
-        and release date.
+      description: Returns the current stable release of R, including the version number and release date.
       tags:
-        - Versions
+      - Versions
       responses:
         '200':
           description: Current R release version
@@ -40,11 +34,9 @@ paths:
     get:
       operationId: getRReleaseWindows
       summary: Get Current R Release for Windows
-      description: >-
-        Returns the current stable release of R for Windows, including version
-        number and release date.
+      description: Returns the current stable release of R for Windows, including version number and release date.
       tags:
-        - Versions
+      - Versions
       responses:
         '200':
           description: Current R release version for Windows
@@ -56,11 +48,9 @@ paths:
     get:
       operationId: getRReleaseMacos
       summary: Get Current R Release for macOS
-      description: >-
-        Returns the current stable release of R for macOS, including version
-        number and release date.
+      description: Returns the current stable release of R for macOS, including version number and release date.
       tags:
-        - Versions
+      - Versions
       responses:
         '200':
           description: Current R release version for macOS
@@ -72,11 +62,9 @@ paths:
     get:
       operationId: getROldrel
       summary: Get Previous R Release
-      description: >-
-        Returns the previous stable release of R (oldrel), useful for testing
-        backward compatibility in CI pipelines.
+      description: Returns the previous stable release of R (oldrel), useful for testing backward compatibility in CI pipelines.
       tags:
-        - Versions
+      - Versions
       responses:
         '200':
           description: Previous R release version
@@ -88,11 +76,9 @@ paths:
     get:
       operationId: listRVersions
       summary: List All R Versions
-      description: >-
-        Returns all historical R releases including version numbers, release
-        dates, and nicknames.
+      description: Returns all historical R releases including version numbers, release dates, and nicknames.
       tags:
-        - Versions
+      - Versions
       responses:
         '200':
           description: List of all R versions
@@ -104,7 +90,7 @@ paths:
                   $ref: '#/components/schemas/RVersionDetail'
 components:
   schemas:
-    RVersion:
+    RVersionDetail:
       type: object
       properties:
         version:
@@ -120,7 +106,7 @@ components:
           type: string
           description: R release nickname
           example: Pile of Leaves
-    RVersionDetail:
+    RVersion:
       type: object
       properties:
         version:

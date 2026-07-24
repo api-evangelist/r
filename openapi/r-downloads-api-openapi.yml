@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: METACRAN CranDB Badges Downloads API
+  description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
+  version: 1.0.0
+  contact:
+    name: METACRAN
+    url: https://r-pkg.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://crandb.r-pkg.org
+  description: METACRAN CranDB production server
+tags:
+- name: Downloads
+  description: Package download statistics
+paths:
+  /downloads/total/{period}/{packages}:
+    get:
+      operationId: getPackageDownloadTotals
+      summary: Get Package Download Totals
+      description: Returns the total number of downloads for one or more R packages over the specified time period from the RStudio CRAN mirror.
+      tags:
+      - Downloads
+      parameters:
+      - name: period
+        in: path
+        required: true
+        description: Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like 2023-01-01:2023-12-31.
+        schema:
+          type: string
+          enum:
+          - last-day
+          - last-week
+          - last-month
+          - grand-total
+          example: last-week
+      - name: packages
+        in: path
+        required: true
+        description: Package name or comma-separated list of package names.
+        schema:
+          type: string
+          example: ggplot2
+      responses:
+        '200':
+          description: Download totals for the specified packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DownloadTotal'
+  /downloads/daily/{period}/{packages}:
+    get:
+      operationId: getPackageDownloadDaily
+      summary: Get Package Daily Downloads
+      description: Returns daily download counts for one or more R packages over the specified time period.
+      tags:
+      - Downloads
+      parameters:
+      - name: period
+        in: path
+        required: true
+        description: Time period (last-day, last-week, last-month, or date range)
+        schema:
+          type: string
+          example: last-month
+      - name: packages
+        in: path
+        required: true
+        description: Package name or comma-separated list
+        schema:
+          type: string
+          example: dplyr,tidyr
+      responses:
+        '200':
+          description: Daily download counts for the specified packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DownloadDaily'
+components:
+  schemas:
+    DownloadTotal:
+      type: object
+      properties:
+        package:
+          type: string
+          description: R package name
+          example: ggplot2
+        start:
+          type: string
+          format: date
+          description: Start date of the period
+          example: '2024-01-01'
+        end:
+          type: string
+          format: date
+          description: End date of the period
+          example: '2024-01-07'
+        downloads:
+          type: integer
+          description: Total download count for the period
+          example: 142835
+    DailyCount:
+      type: object
+      properties:
+        day:
+          type: string
+          format: date
+          description: Date of downloads
+          example: '2024-01-15'
+        downloads:
+          type: integer
+          description: Number of downloads on this day
+          example: 4821
+    DownloadDaily:
+      type: object
+      properties:
+        package:
+          type: string
+          description: R package name
+          example: dplyr
+        start:
+          type: string
+          format: date
+          description: Start date of the period
+          example: '2024-01-01'
+        end:
+          type: string
+          format: date
+          description: End date of the period
+          example: '2024-01-31'
+        downloads:
+          type: array
+          description: Daily download counts
+          items:
+            $ref: '#/components/schemas/DailyCount'

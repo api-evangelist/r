@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: METACRAN CranDB Badges API
+  description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
+  version: 1.0.0
+  contact:
+    name: METACRAN
+    url: https://r-pkg.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://crandb.r-pkg.org
+  description: METACRAN CranDB production server
+tags:
+- name: Badges
+  description: Download count badge endpoints
+paths:
+  /badges/{period}/{package}:
+    get:
+      operationId: getDownloadBadge
+      summary: Get Download Count Badge
+      description: Returns an SVG badge showing the download count for an R package over the specified period. Suitable for embedding in README files.
+      tags:
+      - Badges
+      parameters:
+      - name: period
+        in: path
+        required: true
+        description: Badge period (last-day, last-week, grand-total)
+        schema:
+          type: string
+          enum:
+          - last-day
+          - last-week
+          - grand-total
+          example: grand-total
+      - name: package
+        in: path
+        required: true
+        description: R package name
+        schema:
+          type: string
+          example: Rcpp
+      responses:
+        '200':
+          description: SVG badge image
+          content:
+            image/svg+xml:
+              schema:
+                type: string

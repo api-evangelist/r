@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: METACRAN CranDB Badges Top Packages API
+  description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
+  version: 1.0.0
+  contact:
+    name: METACRAN
+    url: https://r-pkg.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://crandb.r-pkg.org
+  description: METACRAN CranDB production server
+tags:
+- name: Top Packages
+  description: Most-downloaded CRAN packages
+paths:
+  /top/{period}/{count}:
+    get:
+      operationId: getTopPackages
+      summary: Get Top Downloaded Packages
+      description: Returns the most-downloaded CRAN packages for the specified time period. Count is limited to a maximum of 100.
+      tags:
+      - Top Packages
+      parameters:
+      - name: period
+        in: path
+        required: true
+        description: Time period for ranking (last-day, last-week, last-month)
+        schema:
+          type: string
+          enum:
+          - last-day
+          - last-week
+          - last-month
+          example: last-week
+      - name: count
+        in: path
+        required: true
+        description: Number of top packages to return (max 100)
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          example: 20
+      responses:
+        '200':
+          description: Top downloaded packages for the period
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopPackages'
+components:
+  schemas:
+    TopPackages:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+          description: Start date of the period
+          example: '2024-01-22'
+        end:
+          type: string
+          format: date
+          description: End date of the period
+          example: '2024-01-28'
+        downloads:
+          type: array
+          description: Package download rankings
+          items:
+            $ref: '#/components/schemas/PackageRanking'
+    PackageRanking:
+      type: object
+      properties:
+        package:
+          type: string
+          description: R package name
+          example: Rcpp
+        downloads:
+          type: integer
+          description: Download count for the period
+          example: 853210
