@@ -1,0 +1,22 @@
+{
+  "provider": "r",
+  "sources": [
+    "r-badges-api-openapi.yml",
+    "r-downloads-api-openapi.yml",
+    "r-packages-api-openapi.yml",
+    "r-top-packages-api-openapi.yml",
+    "r-versions-api-openapi.yml"
+  ],
+  "outputs": [
+    "r-badges-api-openapi.yml",
+    "r-downloads-api-openapi.yml",
+    "r-packages-api-openapi.yml",
+    "r-top-packages-api-openapi.yml",
+    "r-versions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

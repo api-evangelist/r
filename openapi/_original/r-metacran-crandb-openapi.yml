@@ -1,0 +1,228 @@
+openapi: 3.0.3
+info:
+  title: METACRAN CranDB API
+  description: >-
+    CouchDB-backed REST API providing programmatic access to metadata for all
+    CRAN R packages. Enables lookup of package information, version history,
+    dependencies, and maintainer data in JSON format.
+  version: 1.0.0
+  contact:
+    name: METACRAN
+    url: https://r-pkg.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://crandb.r-pkg.org
+    description: METACRAN CranDB production server
+tags:
+  - name: Packages
+    description: CRAN package metadata
+  - name: Search
+    description: Package search operations
+paths:
+  /{package}:
+    get:
+      operationId: getPackage
+      summary: Get Package Metadata
+      description: >-
+        Returns metadata for the latest version of an R package on CRAN,
+        including description, version, dependencies, maintainer, license,
+        and publication date.
+      tags:
+        - Packages
+      parameters:
+        - name: package
+          in: path
+          required: true
+          description: CRAN package name (case-sensitive)
+          schema:
+            type: string
+            example: ggplot2
+      responses:
+        '200':
+          description: Package metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageMetadata'
+        '404':
+          description: Package not found
+  /{package}/{version}:
+    get:
+      operationId: getPackageVersion
+      summary: Get Package Version Metadata
+      description: >-
+        Returns metadata for a specific version of an R package. Use
+        "all" as the version to retrieve all versions.
+      tags:
+        - Packages
+      parameters:
+        - name: package
+          in: path
+          required: true
+          description: CRAN package name
+          schema:
+            type: string
+            example: ggplot2
+        - name: version
+          in: path
+          required: true
+          description: Package version string, or "all" for all versions
+          schema:
+            type: string
+            example: 3.4.4
+      responses:
+        '200':
+          description: Package version metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageMetadata'
+        '404':
+          description: Package or version not found
+  /-/pkgs:
+    get:
+      operationId: listAllPackages
+      summary: List All CRAN Packages
+      description: >-
+        Returns a list of all package names currently available on CRAN
+        along with their latest versions.
+      tags:
+        - Packages
+      responses:
+        '200':
+          description: All CRAN packages and versions
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                  description: Latest version string
+  /-/desc:
+    get:
+      operationId: listPackageDescriptions
+      summary: List Package Descriptions
+      description: >-
+        Returns name, title, and version for all CRAN packages.
+      tags:
+        - Packages
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            example: 100
+        - name: skip
+          in: query
+          required: false
+          description: Number of records to skip for pagination
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: Package name-title-version list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PackageSummary'
+  /-/allvign:
+    get:
+      operationId: listPackageVignettes
+      summary: List All Package Vignettes
+      description: >-
+        Returns all vignettes available for CRAN packages.
+      tags:
+        - Packages
+      responses:
+        '200':
+          description: Vignette list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VignetteSummary'
+components:
+  schemas:
+    PackageMetadata:
+      type: object
+      properties:
+        Package:
+          type: string
+          description: Package name
+          example: ggplot2
+        Version:
+          type: string
+          description: Package version
+          example: 3.4.4
+        Title:
+          type: string
+          description: Short package title
+          example: Create Elegant Data Visualisations Using the Grammar of Graphics
+        Description:
+          type: string
+          description: Full package description
+        Author:
+          type: string
+          description: Package authors
+        Maintainer:
+          type: string
+          description: Package maintainer with email
+          example: Hadley Wickham <hadley@posit.co>
+        License:
+          type: string
+          description: Package license
+          example: MIT + file LICENSE
+        Depends:
+          type: string
+          description: Required R version and packages
+        Imports:
+          type: string
+          description: Imported packages
+        Suggests:
+          type: string
+          description: Suggested packages
+        Date:
+          type: string
+          format: date
+          description: Publication date
+        URL:
+          type: string
+          description: Package website URL
+        BugReports:
+          type: string
+          description: Bug report URL
+    PackageSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Package name
+          example: dplyr
+        title:
+          type: string
+          description: Short title
+          example: A Grammar of Data Manipulation
+        version:
+          type: string
+          description: Latest version
+          example: 1.1.4
+    VignetteSummary:
+      type: object
+      properties:
+        package:
+          type: string
+          description: Package name
+        vignette:
+          type: string
+          description: Vignette identifier
+        title:
+          type: string
+          description: Vignette title
