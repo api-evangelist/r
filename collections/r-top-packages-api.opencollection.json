@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "METACRAN CranDB Badges Top Packages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Top Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Top Downloaded Packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/top/:period/:count",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period for ranking (last-day, last-week, last-month)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "path",
+                "description": "Number of top packages to return (max 100)"
+              }
+            ]
+          },
+          "docs": "Returns the most-downloaded CRAN packages for the specified time period. Count is limited to a maximum of 100."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

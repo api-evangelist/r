@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "METACRAN CranDB Badges Downloads API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Package Download Totals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/downloads/total/:period/:packages",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like 2023-01-01:2023-12-31."
+              },
+              {
+                "name": "packages",
+                "value": "",
+                "type": "path",
+                "description": "Package name or comma-separated list of package names."
+              }
+            ]
+          },
+          "docs": "Returns the total number of downloads for one or more R packages over the specified time period from the RStudio CRAN mirror."
+        },
+        {
+          "info": {
+            "name": "Get Package Daily Downloads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://crandb.r-pkg.org/downloads/daily/:period/:packages",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path",
+                "description": "Time period (last-day, last-week, last-month, or date range)"
+              },
+              {
+                "name": "packages",
+                "value": "",
+                "type": "path",
+                "description": "Package name or comma-separated list"
+              }
+            ]
+          },
+          "docs": "Returns daily download counts for one or more R packages over the specified time period."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

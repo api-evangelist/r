@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "2418619f-bbeb-42d0-9f9a-d27aa0253a5f",
+      "name": "Downloads",
+      "description": {
+        "content": "Package download statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4b292db-45cb-4321-a5f3-8b06d8c93ffb",
+          "name": "Get Package Download Totals",
+          "request": {
+            "name": "Get Package Download Totals",
+            "description": {
+              "content": "Returns the total number of downloads for one or more R packages over the specified time period from the RStudio CRAN mirror.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "downloads",
+                "total",
+                ":period",
+                ":packages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "period",
+                  "description": "(Required) Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like 2023-01-01:2023-12-31."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "packages",
+                  "description": "(Required) Package name or comma-separated list of package names."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3ef37f6-e1fc-4904-a0ba-5f20629ffa44",
+              "name": "Download totals for the specified packages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "downloads",
+                    "total",
+                    ":period",
+                    ":packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period",
+                      "description": "(Required) Time period for download stats. Use last-day, last-week, last-month, grand-total, or a date range like 2023-01-01:2023-12-31."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packages",
+                      "description": "(Required) Package name or comma-separated list of package names."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"package\": \"ggplot2\",\n    \"start\": \"2024-01-01\",\n    \"end\": \"2024-01-07\",\n    \"downloads\": 142835\n  },\n  {\n    \"package\": \"ggplot2\",\n    \"start\": \"2024-01-01\",\n    \"end\": \"2024-01-07\",\n    \"downloads\": 142835\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8d6a69d-9799-4613-a3fc-a34db158738d",
+          "name": "Get Package Daily Downloads",
+          "request": {
+            "name": "Get Package Daily Downloads",
+            "description": {
+              "content": "Returns daily download counts for one or more R packages over the specified time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "downloads",
+                "daily",
+                ":period",
+                ":packages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "period",
+                  "description": "(Required) Time period (last-day, last-week, last-month, or date range)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "packages",
+                  "description": "(Required) Package name or comma-separated list"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25c745b0-225d-4a7b-be75-2f275da1c48e",
+              "name": "Daily download counts for the specified packages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "downloads",
+                    "daily",
+                    ":period",
+                    ":packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period",
+                      "description": "(Required) Time period (last-day, last-week, last-month, or date range)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packages",
+                      "description": "(Required) Package name or comma-separated list"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"package\": \"dplyr\",\n    \"start\": \"2024-01-01\",\n    \"end\": \"2024-01-31\",\n    \"downloads\": [\n      {\n        \"day\": \"2024-01-15\",\n        \"downloads\": 4821\n      },\n      {\n        \"day\": \"2024-01-15\",\n        \"downloads\": 4821\n      }\n    ]\n  },\n  {\n    \"package\": \"dplyr\",\n    \"start\": \"2024-01-01\",\n    \"end\": \"2024-01-31\",\n    \"downloads\": [\n      {\n        \"day\": \"2024-01-15\",\n        \"downloads\": 4821\n      },\n      {\n        \"day\": \"2024-01-15\",\n        \"downloads\": 4821\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://crandb.r-pkg.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20517f41-14c6-4e40-a961-604e8c2ea05e",
+    "name": "METACRAN CranDB Badges Downloads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.\n\nContact Support:\n Name: METACRAN",
+      "type": "text/plain"
+    }
+  }
+}
