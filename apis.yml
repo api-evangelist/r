@@ -29,7 +29,7 @@ tags:
   - Programming Language
 created: '2025-01-01'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: r:r-badges-api
   name: R Badges API
