@@ -1,22 +1,31 @@
 {
   "provider": "r",
   "sources": [
-    "r-badges-api-openapi.yml",
-    "r-downloads-api-openapi.yml",
-    "r-packages-api-openapi.yml",
-    "r-top-packages-api-openapi.yml",
-    "r-versions-api-openapi.yml"
+    "_original/r-metacran-crandb-openapi.yml",
+    "_original/r-metacran-cranlogs-openapi.yml",
+    "_original/r-rversions-openapi.yml"
   ],
   "outputs": [
+    "r-packages-api-openapi.yml",
     "r-badges-api-openapi.yml",
     "r-downloads-api-openapi.yml",
-    "r-packages-api-openapi.yml",
     "r-top-packages-api-openapi.yml",
     "r-versions-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "r-metacran-crandb-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "r-metacran-cranlogs-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "r-rversions-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "r-badges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "r-downloads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "r-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "r-top-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "r-versions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

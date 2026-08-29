@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: METACRAN CranDB Badges Packages API
+  title: METACRAN CranDB Packages API
   description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
   version: 1.0.0
   contact:

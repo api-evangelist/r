@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: METACRAN CranDB Badges Top Packages API
-  description: CouchDB-backed REST API providing programmatic access to metadata for all CRAN R packages. Enables lookup of package information, version history, dependencies, and maintainer data in JSON format.
+  title: METACRAN CranLogs Top Packages API
+  description: REST API providing download statistics for R packages from the RStudio CRAN mirror. Supports per-package and top-package download counts across daily, weekly, monthly, and all-time periods. Returns JSON responses.
   version: 1.0.0
   contact:
     name: METACRAN
@@ -10,8 +10,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://crandb.r-pkg.org
-  description: METACRAN CranDB production server
+- url: https://cranlogs.r-pkg.org
+  description: METACRAN CranLogs production server
 tags:
 - name: Top Packages
   description: Most-downloaded CRAN packages
