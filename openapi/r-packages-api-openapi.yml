@@ -137,21 +137,6 @@ paths:
                   $ref: '#/components/schemas/VignetteSummary'
 components:
   schemas:
-    PackageSummary:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Package name
-          example: dplyr
-        title:
-          type: string
-          description: Short title
-          example: A Grammar of Data Manipulation
-        version:
-          type: string
-          description: Latest version
-          example: 1.1.4
     VignetteSummary:
       type: object
       properties:
@@ -212,3 +197,18 @@ components:
         BugReports:
           type: string
           description: Bug report URL
+    PackageSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Package name
+          example: dplyr
+        title:
+          type: string
+          description: Short title
+          example: A Grammar of Data Manipulation
+        version:
+          type: string
+          description: Latest version
+          example: 1.1.4

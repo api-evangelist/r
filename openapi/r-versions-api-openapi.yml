@@ -90,7 +90,7 @@ paths:
                   $ref: '#/components/schemas/RVersionDetail'
 components:
   schemas:
-    RVersionDetail:
+    RVersion:
       type: object
       properties:
         version:
@@ -106,7 +106,7 @@ components:
           type: string
           description: R release nickname
           example: Pile of Leaves
-    RVersion:
+    RVersionDetail:
       type: object
       properties:
         version:
