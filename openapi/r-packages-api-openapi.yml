@@ -137,18 +137,6 @@ paths:
                   $ref: '#/components/schemas/VignetteSummary'
 components:
   schemas:
-    VignetteSummary:
-      type: object
-      properties:
-        package:
-          type: string
-          description: Package name
-        vignette:
-          type: string
-          description: Vignette identifier
-        title:
-          type: string
-          description: Vignette title
     PackageSummary:
       type: object
       properties:
@@ -164,6 +152,18 @@ components:
           type: string
           description: Latest version
           example: 1.1.4
+    VignetteSummary:
+      type: object
+      properties:
+        package:
+          type: string
+          description: Package name
+        vignette:
+          type: string
+          description: Vignette identifier
+        title:
+          type: string
+          description: Vignette title
     PackageMetadata:
       type: object
       properties:

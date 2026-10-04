@@ -85,6 +85,28 @@ paths:
                   $ref: '#/components/schemas/DownloadDaily'
 components:
   schemas:
+    DownloadDaily:
+      type: object
+      properties:
+        package:
+          type: string
+          description: R package name
+          example: dplyr
+        start:
+          type: string
+          format: date
+          description: Start date of the period
+          example: '2024-01-01'
+        end:
+          type: string
+          format: date
+          description: End date of the period
+          example: '2024-01-31'
+        downloads:
+          type: array
+          description: Daily download counts
+          items:
+            $ref: '#/components/schemas/DailyCount'
     DownloadTotal:
       type: object
       properties:
@@ -118,25 +140,3 @@ components:
           type: integer
           description: Number of downloads on this day
           example: 4821
-    DownloadDaily:
-      type: object
-      properties:
-        package:
-          type: string
-          description: R package name
-          example: dplyr
-        start:
-          type: string
-          format: date
-          description: Start date of the period
-          example: '2024-01-01'
-        end:
-          type: string
-          format: date
-          description: End date of the period
-          example: '2024-01-31'
-        downloads:
-          type: array
-          description: Daily download counts
-          items:
-            $ref: '#/components/schemas/DailyCount'

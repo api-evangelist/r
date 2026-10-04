@@ -53,6 +53,17 @@ paths:
                 $ref: '#/components/schemas/TopPackages'
 components:
   schemas:
+    PackageRanking:
+      type: object
+      properties:
+        package:
+          type: string
+          description: R package name
+          example: Rcpp
+        downloads:
+          type: integer
+          description: Download count for the period
+          example: 853210
     TopPackages:
       type: object
       properties:
@@ -71,14 +82,3 @@ components:
           description: Package download rankings
           items:
             $ref: '#/components/schemas/PackageRanking'
-    PackageRanking:
-      type: object
-      properties:
-        package:
-          type: string
-          description: R package name
-          example: Rcpp
-        downloads:
-          type: integer
-          description: Download count for the period
-          example: 853210
