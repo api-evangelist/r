@@ -1,4 +1,4 @@
-# R (r)
+# R
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,114 +66,167 @@
 
 R is a free, open-source programming language and statistical computing environment maintained by the R Core Team and supported by the R Foundation. It provides a wide variety of statistical and graphical techniques and is highly extensible through its package ecosystem on CRAN (Comprehensive R Archive Network), Bioconductor, and GitHub. R is widely used among statisticians, data scientists, and researchers for data analysis, visualization, and reproducible research.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/apis.yml)
+**Areas:** R · Statistics · Data Science · Open Source · Programming Language
 
-## Scope
+## R on APIs.io
 
-- **Type:** Index
+Everything profiled for R is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/r/](https://apis.io/providers/r/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- R
-- Statistics
-- Data Science
-- Open Source
-- Programming Language
+- [R Badges API](https://apis.io/apis/r/r-badges-api/) — Download count badge endpoints
+- [R Downloads API](https://apis.io/apis/r/r-downloads-api/) — Package download statistics
+- [R Packages API](https://apis.io/apis/r/r-packages-api/) — CRAN package metadata
+- [R Top Packages API](https://apis.io/apis/r/r-top-packages-api/) — Most-downloaded CRAN packages
+- [R Versions API](https://apis.io/apis/r/r-versions-api/) — R release version information
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### METACRAN CranDB API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-CouchDB-based REST API providing programmatic access to metadata for all CRAN R packages. Supports package lookup, version history, and package dependency data in JSON format.
+- [R Agentic Access](https://apis.io/agentic-access/r/r-agentic-access/)
 
-- **Human URL:** [https://github.com/metacran/crandb](https://github.com/metacran/crandb)
-- **Base URL:** `https://crandb.r-pkg.org`
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- CRAN
-- Packages
-- Metadata
+- [CRAN Package](https://apis.io/schemas/r/r-cran-package/)
+- [CRAN Package Download Statistics](https://apis.io/schemas/r/r-download-stats/)
+- [R Version](https://apis.io/schemas/r/r-version/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://github.com/metacran/crandb)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-metacran-crandb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### METACRAN CranLogs API
+- [R Cran Package Structure](https://apis.io/json-structure/r/r-cran-package-structure/)
 
-REST API providing download statistics for R packages from the RStudio CRAN mirror. Supports daily, weekly, monthly, and grand-total download counts with badge generation endpoints.
+#### JSON-LD (1)
 
-- **Human URL:** [https://github.com/metacran/cranlogs.app](https://github.com/metacran/cranlogs.app)
-- **Base URL:** `https://cranlogs.r-pkg.org`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [R Context](https://apis.io/jsonld/r/r-context/)
 
-- CRAN
-- Downloads
-- Statistics
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://github.com/metacran/cranlogs.app)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-metacran-cranlogs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [R Vocabulary](https://apis.io/vocabularies/r/r-vocabulary/)
 
-### R Versions API
+#### Examples (3)
 
-REST API that reports the current and previous stable releases of R, including version numbers and release dates. Used by CI tools and package managers to determine supported R versions.
+Example requests and responses.
 
-- **Human URL:** [https://github.com/metacran/rversions.app](https://github.com/metacran/rversions.app)
-- **Base URL:** `https://rversions.r-pkg.org`
+- [R Get Package Download Totals Example](https://apis.io/examples/r/r-get-package-download-totals-example/)
+- [R Get Package Metadata Example](https://apis.io/examples/r/r-get-package-metadata-example/)
+- [R Get R Release Example](https://apis.io/examples/r/r-get-r-release-example/)
 
-#### Tags
+#### Collections (8)
 
-- R
-- Versions
-- Releases
+Postman and Open Collection request collections.
 
-#### Properties
+- [METACRAN CranDB Badges API](https://apis.io/collections/r/open-r-badges-api/)
+- [METACRAN CranDB Badges Downloads API](https://apis.io/collections/r/open-r-downloads-api/)
+- [METACRAN CranDB API](https://apis.io/collections/r/open-r-metacran-crandb/)
+- [METACRAN CranLogs API](https://apis.io/collections/r/open-r-metacran-cranlogs/)
+- [METACRAN CranDB Badges Packages API](https://apis.io/collections/r/open-r-packages-api/)
+- [R Versions API](https://apis.io/collections/r/open-r-rversions/)
+- [METACRAN CranDB Badges Top Packages API](https://apis.io/collections/r/open-r-top-packages-api/)
+- [METACRAN CranDB Badges Versions API](https://apis.io/collections/r/open-r-versions-api/)
 
-- [Documentation](https://github.com/metacran/rversions.app)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/r/refs/heads/main/openapi/r-rversions-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/r-metacran-crandb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-crandb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-metacran-cranlogs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-metacran-cranlogs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/r-rversions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/r-rversions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-## Common Properties
+Spectral rulesets for the provider's contracts.
+
+- [R — jsonschema rules](https://apis.io/rules/r/r-jsonschema-spectral-rules/)
+- [R API Rules](https://apis.io/rules/r/r-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [R Domain Security](https://apis.io/security/r/r-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [R Plans Pricing](https://apis.io/plans/r/r-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [R Rate Limits](https://apis.io/rate-limits/r/r-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [R Finops](https://apis.io/finops/r/r-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.r-project.org/)
 - [Documentation](https://cran.r-project.org/manuals.html)
-- [Git Hub Org](https://github.com/r-lib)
-- [Git Hub Org](https://github.com/r-devel)
-- [Package Registry](https://cran.r-project.org/)
-- [Package Registry](https://bioconductor.org/)
-- [Package Search](https://www.rdocumentation.org/)
-- [Package Search](https://rdrr.io/)
 - [Blog](https://blog.r-project.org/)
-- [Forum](https://stat.ethz.ch/mailman/listinfo/r-help)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/r)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.5** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 51.0 |
+| Contract governance | 13.6 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/r/](https://apis.io/providers/r/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for R: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/r/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
